@@ -1,0 +1,29 @@
+{% extends 'hotel/base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="bg-dark text-white text-center rounded p-5 mb-5">
+    <h1 class="display-4">Welcome to Grand Hotel</h1>
+    <p class="lead">Comfortable rooms at great prices.</p>
+    <a href="/rooms/" class="btn btn-light btn-lg">Book a Room</a>
+</div>
+
+<h2 class="mb-4 text-center">Featured Rooms</h2>
+
+<div class="row">
+    {% for room in featured %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            {% if room.image %}
+            <img src="{{ room.image.url }}" class="card-img-top" alt="{{ room.name }}" style="height: 220px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ room.name }}</h5>
+                <h4 class="text-success">₦{{ room.price|floatformat:0|intcomma }} <small class="text-muted fs-6">per night</small></h4>
+                <a href="/rooms/{{ room.id }}/" class="btn btn-dark mt-2">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

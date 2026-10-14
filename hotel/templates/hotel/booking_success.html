@@ -1,0 +1,22 @@
+{% extends 'hotel/base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="text-center py-4">
+    <h1 class="text-success">Booking received!</h1>
+    <p class="lead">Thank you, {{ booking.guest_name }}. We will contact you shortly to confirm your reservation.</p>
+
+    <div class="card shadow-sm col-md-6 mx-auto text-start mb-4">
+        <div class="card-body">
+            <h5 class="mb-3">Your booking</h5>
+            <p class="mb-1"><strong>Room:</strong> {{ booking.room.name }}</p>
+            <p class="mb-1"><strong>Check-in:</strong> {{ booking.check_in }}</p>
+            <p class="mb-1"><strong>Check-out:</strong> {{ booking.check_out }}</p>
+            <p class="mb-1"><strong>Nights:</strong> {{ booking.nights }}</p>
+            <h4 class="text-success mt-3">Total: ₦{{ booking.total_price|floatformat:0|intcomma }}</h4>
+        </div>
+    </div>
+
+    <a href="/rooms/" class="btn btn-dark">Back to rooms</a>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'hotel/base.html' %}
+{% load humanize %}
+
+{% block content %}
+<a href="/rooms/" class="btn btn-outline-secondary mb-3">&larr; Back to rooms</a>
+
+<div class="card shadow-sm">
+    {% if room.image %}
+<img src="{{ room.image.url }}" class="card-img-top" alt="{{ room.name }}" style="max-height: 400px; object-fit: cover;">
+{% endif %}
+    <div class="card-body">
+        <h1>{{ room.name }}</h1>
+        <p class="lead">{{ room.description }}</p>
+        <p>Sleeps up to {{ room.capacity }} guests</p>
+        <h3 class="text-success">₦{{ room.price|floatformat:0|intcomma }} <small class="text-muted fs-6">per night</small></h3>
+        <a href="/rooms/{{ room.id }}/book/" class="btn btn-dark mt-3">Book Now</a>
+    </div>
+</div>
+{% endblock %}
