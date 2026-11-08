@@ -2,7 +2,7 @@
 
 A hotel website built with Django and Bootstrap where guests can browse rooms and book a stay online.
 
-**Live demo:** coming soon
+**Live demo:** victor369.pythonanywhere.com
 
 ## Features
 
